@@ -1,6 +1,9 @@
 import React from 'react';
 import Button from '../Components/button.js';
 import axios from 'axios';
+import Header from '../Components/header.js';
+
+let loginValue  = true;
 
 class Profile extends React.Component{
 	constructor(){
@@ -27,7 +30,9 @@ class Profile extends React.Component{
 	
 	render(){
 		return(
-			<div >
+		<div>
+			<Header loggedInProps = {loginValue} ></Header>
+			<div className = "col-md-offset-3 col-md-6 bg-white content">
 			<div className="col-md-12">
 				<div className="text-align-center">
 					<h3>User profile</h3>
@@ -36,7 +41,7 @@ class Profile extends React.Component{
 			</div>
 			<div className = "col-md-12 mt-20px">
 				<div className="col-md-3 pull-right">
-					<Button handleSubmitProps = {this.enableFields} btnValue = "Edit profile"></Button>
+					<Button handleSubmitProps = {this.enableFields} btnValue = "Edit"></Button>
 				</div>
 				<div className = "col-md-9">
 						<div className = "col-md-12">
@@ -80,6 +85,7 @@ class Profile extends React.Component{
 				</div>
 			</div>
 			</div>
+		</div>
 		)
 	}
 }

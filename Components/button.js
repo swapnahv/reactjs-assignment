@@ -1,3 +1,6 @@
+/*
+This is the button componet whic receives two props from parent component.
+*/
 import React from 'react';
 
 class Button extends React.Component{

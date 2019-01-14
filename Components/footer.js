@@ -1,3 +1,8 @@
+/*
+This is the footer component which is common across the application.
+onclick of footer text, user will navigate to www.google.com.
+*/
+
 import React from 'react';
 
 class Footer extends React.Component{
@@ -6,6 +11,7 @@ class Footer extends React.Component{
 		this.footerNavigation = this.footerNavigation.bind(this);
 	}
 	footerNavigation(){
+		//User will navigate to google web page on click of text in footer
 		window.location.href = 'http://www.google.com'
 	}
 	render(){

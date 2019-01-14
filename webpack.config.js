@@ -29,12 +29,5 @@ module.exports = {
 				use: ['style-loader', 'css-loader']
 			}
 		]
-	},
-	resolve: {
-		
-		extensions: ['', '.js', '.jsx', '.css'],
-        modulesDirectories: [
-          'node_modules'
-        ]        
-    }
+	}
 }

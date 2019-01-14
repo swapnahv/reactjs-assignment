@@ -1,9 +1,13 @@
+/*
+This accordion component. This has a button and the panel , which toggles on click of button.
+This dispalys the product details and and the product image which are passed by parent component.
+*/
 import React from 'react';
 import {Button, Panel} from 'react-bootstrap';
 
 class Accordion extends React.Component {
-  constructor(props, context) {
-    super(props, context);
+  constructor(props) {
+    super(props);
 
     this.state = {
       open: false

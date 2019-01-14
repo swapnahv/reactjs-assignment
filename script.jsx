@@ -1,13 +1,22 @@
+/*
+This is main page which is responsible for creating store and loads first while running the application.
+store - this is the container for state of the application
+Provider - responsible for store values to be available for all the components in it.
+*/
+
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Header from './Components/header.js';
 import Footer from './Components/footer.js';
 import Login from './Containers/login.js';
 import Dashboard from './Containers/dashboard.js';
 import Profile from './Containers/profile.js';
+import {createStore} from 'redux';
+import {Provider} from 'react-redux';
+import allReducers from './Reducers/root-reducer.js'  
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom'; 
 
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 
+let store  = createStore(allReducers);
 
 class MainPage extends React.Component{
 	constructor(props){
@@ -15,7 +24,7 @@ class MainPage extends React.Component{
 	}
 	render(){
 	return(
-		<Router>
+		<Router history={history}>
 			<div>
 				<Route exact path = "/" component = {Login}></Route>
 				<Route path = "/dashboard" component = {Dashboard}></Route>
@@ -26,6 +35,10 @@ class MainPage extends React.Component{
 }
 }
 
-ReactDOM.render(<Header/>,document.getElementById("header"));
-ReactDOM.render(<MainPage/>,document.getElementById("content"));
+ReactDOM.render(
+	<Provider store={store}>
+		<MainPage>
+		</MainPage>
+	</Provider>, document.getElementById("mainContent"));
+	
 ReactDOM.render(<Footer/>,document.getElementById("footer"));
