@@ -24,8 +24,8 @@ class Dashboard extends React.Component {
     this.props.history.push("/editProfile");
   }
   componentDidMount() {
-    debugger;
-    fetch("../data.JSON")
+    axios
+      .get("data.json")
       .then(res => {
         //on successfuly fetching data from JSON file
         //this.setState({userDetails: res.data.userDetails});
