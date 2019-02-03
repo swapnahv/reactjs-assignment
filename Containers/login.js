@@ -9,7 +9,7 @@ import Header from '../Components/header.js';
 import { connect } from 'react-redux';
 
 //Below variable is responsible to hide/show logout button. this is sent as props to header component
-let loginValue = false;
+//let loginValue = false;
 
 class Login extends React.Component{
 	constructor(props){
@@ -22,6 +22,7 @@ class Login extends React.Component{
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleUsername = this.handleUsername.bind(this);
 		this.handlePassword = this.handlePassword.bind(this);
+		this.getLoggedInValue = this.getLoggedInValue.bind(this);
 		
 	}
 	handleSubmit(){
@@ -33,7 +34,9 @@ class Login extends React.Component{
            if (!(lastAtPos < lastDotPos && lastAtPos > 0 && this.state.username.indexOf('@@') == -1 && lastDotPos > 2 && (this.state.username.length - lastDotPos) > 2)) {
               this.setState({errorMsg: 'Please enter valid username , user name must be an email id'})
             }else if(this.state.username === 'Test@gmail.com' && this.state.password === 'Test@123'){
-			this.props.history.push('/dashboard');
+				console.log(this.props);
+				this.props.loginFun();
+				this.props.history.push('/dashboard');
 			}else{
 			this.setState({errorMsg: 'Please enter valid credentials'})
 			}
@@ -47,10 +50,15 @@ class Login extends React.Component{
 	handleUsername(e){
 		this.setState({username: e.target.value})
 	}
+	getLoggedInValue(){
+		return(
+			<Header loggedInProps = {this.props.loggedIn} ></Header>
+		);
+	}
 	render(){
 		return(
-		<div>			
-			<Header loggedInProps = {loginValue} ></Header>
+		<div>
+			{this.getLoggedInValue()}
 			<div className = "col-md-offset-3 col-md-6 bg-white content">
 				<h2 className= "text-align-center">Login{this.state.loggedIn}</h2>
 				<div className = "col-md-12 mt-20px">
@@ -87,6 +95,17 @@ function mapStateToProps(state){
 	}
 }
 
+function mapDispatchToProps(dispatch){
+	return{
+		loginFun: function(){
+			dispatch({
+				type: "LOGGING",
+				payload: true
+			})
+		}
+	}
+}
+
 //Exporting the component so that this can be accessed outside by importing it.
 //connect function binds the mapStateToProps to Login component so that values can be accessed throgh props
-export default connect(mapStateToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
