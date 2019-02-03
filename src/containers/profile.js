@@ -1,6 +1,5 @@
 import React from "react";
 import Button from "../components/button";
-import axios from "axios";
 import Header from "../components/header";
 import { connect } from "react-redux";
 
@@ -18,6 +17,14 @@ class Profile extends React.Component {
   }
 
   render() {
+    let {
+      name,
+      Age,
+      Address1,
+      Address2,
+      Address3,
+      Contact
+    } = this.props.userDetails;
     return (
       <div>
         <Header loggedInProps={this.props.loggedIn} />
@@ -39,7 +46,7 @@ class Profile extends React.Component {
                 <div className="col-md-6">
                   <input
                     type="text"
-                    value={this.props.userDetails.name}
+                    value={name}
                     disabled={this.state.fieldDisable}
                   />
                 </div>
@@ -51,7 +58,7 @@ class Profile extends React.Component {
                 <div className="col-md-6">
                   <input
                     type="text"
-                    value={this.props.userDetails.Age}
+                    value={Age}
                     disabled={this.state.fieldDisable}
                   />
                 </div>
@@ -63,7 +70,7 @@ class Profile extends React.Component {
                 <div className="col-md-6">
                   <input
                     type="text"
-                    value={this.props.userDetails.Contact}
+                    value={Contact}
                     disabled={this.state.fieldDisable}
                   />
                 </div>
@@ -76,7 +83,7 @@ class Profile extends React.Component {
                   <div>
                     <input
                       type="text"
-                      value={this.props.userDetails.Address1}
+                      value={Address1}
                       disabled={this.state.fieldDisable}
                     />
                   </div>
@@ -84,7 +91,7 @@ class Profile extends React.Component {
                     <input
                       type="text"
                       placeholder="Address field"
-                      value={this.props.userDetails.Address2}
+                      value={Address2}
                       disabled={this.state.fieldDisable}
                     />
                   </div>
@@ -92,7 +99,7 @@ class Profile extends React.Component {
                     <input
                       type="text"
                       placeholder="Address field"
-                      value={this.props.userDetails.Address3}
+                      value={Address3}
                       disabled={this.state.fieldDisable}
                     />
                   </div>

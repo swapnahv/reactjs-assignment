@@ -4,7 +4,6 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case "LOGGING":
-      console.log(action.type);
       return {
         loggedIn: action.payload
       };

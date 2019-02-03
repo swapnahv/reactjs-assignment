@@ -1,10 +1,5 @@
 import { __values } from "../../node_modules/tslib";
 
-/*export default function(){
-	return({
-		loggedIn:false
-	})
-}*/
 const initialState = {
   userDetails: {},
   productDetails: {}
@@ -12,8 +7,6 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case "GET_USER_DETAILS":
-      console.log(action.type);
-      console.log(action.payload);
       // Returnin only particular state object, will make other state object undefined in component
       // Example:
       // return {

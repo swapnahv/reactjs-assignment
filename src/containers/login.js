@@ -47,7 +47,6 @@ class Login extends React.Component {
         this.state.username === "Test@gmail.com" &&
         this.state.password === "Test@123"
       ) {
-        console.log(this.props);
         this.props.loginFun();
         this.props.history.push("/dashboard");
       } else {
