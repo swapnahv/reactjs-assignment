@@ -2,8 +2,9 @@ import React from 'react';
 import Button from '../Components/button.js';
 import axios from 'axios';
 import Header from '../Components/header.js';
+import {connect} from 'react-redux';
 
-let loginValue  = true;
+
 
 class Profile extends React.Component{
 	constructor(){
@@ -22,6 +23,7 @@ class Profile extends React.Component{
 		//Handle error
 		console.log(error);
 		})
+		console.log(this.props);
 	}
 	
 	enableFields () {
@@ -31,7 +33,7 @@ class Profile extends React.Component{
 	render(){
 		return(
 		<div>
-			<Header loggedInProps = {loginValue} ></Header>
+			<Header loggedInProps = {this.props.loggedIn} ></Header>
 			<div className = "col-md-offset-3 col-md-6 bg-white content">
 			<div className="col-md-12">
 				<div className="text-align-center">
@@ -90,4 +92,11 @@ class Profile extends React.Component{
 	}
 }
 
-export default Profile;
+//Below is the function which maps the state values from store to props of the component
+function mapStateToProps(state){
+	return{
+		loggedIn: state.appVariables.loggedIn
+	}
+}
+
+export default connect(mapStateToProps)(Profile);
