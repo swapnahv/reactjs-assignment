@@ -7,8 +7,8 @@ import axios from 'axios';
 import Button from '../Components/button.js';
 import Accordion from '../Components/accordion.js';
 import Header from '../Components/header.js';
+import {connect} from 'react-redux';
 
-let loginValue = true;
 
 class Dashboard extends React.Component{
 	constructor(){
@@ -27,18 +27,22 @@ class Dashboard extends React.Component{
 	componentDidMount(){
 		axios.get("../data.JSON").then(res => {
 			//on successfuly fetching data from JSON file
-			this.setState({userDetails: res.data.userDetails});
+			//this.setState({userDetails: res.data.userDetails});
+			console.log(this.props , "before");
+			this.props.GetUserDetailsFun(res.data.userDetails);
+			console.log(this.props, "after");
 			this.setState({productDetails: res.data.productDetails});
 		}).catch(function(error){
 		//Handle error
 		console.log(error);
 		})
+		console.log(this.props);
 	}
 	
 	render(){
 		return(
 		<div>
-			<Header loggedInProps = {loginValue} ></Header>
+			<Header loggedInProps = {this.props.loggedIn} ></Header>
 			<div className = "col-md-offset-3 col-md-6 bg-white content">				
 				<div className="col-md-12 text-align-center">
 					<h3>Dashboard</h3>
@@ -96,4 +100,20 @@ class Dashboard extends React.Component{
 	
 }
 
-export default Dashboard;
+//Below is the function which maps the state values from store to props of the component
+function mapStateToProps(state){
+	return{
+		loggedIn: state.appVariables.loggedIn
+	}
+}
+function mapDispatchToProps(dispatch){
+	return{
+		GetUserDetailsFun: function(userDetails){
+			dispatch({
+				type: "GET_USER_DETAILS",
+				payload: userDetails
+			})
+		}
+	}
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
