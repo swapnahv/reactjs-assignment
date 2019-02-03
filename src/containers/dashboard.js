@@ -13,8 +13,6 @@ class Dashboard extends React.Component {
   constructor() {
     super();
     this.state = {
-      userList: [],
-      userDetails: {},
       productDetails: {}
     };
     this.goToEditProfilePage = this.goToEditProfilePage.bind(this);
@@ -30,7 +28,8 @@ class Dashboard extends React.Component {
         //on successfuly fetching data from JSON file
         //this.setState({userDetails: res.data.userDetails});
         console.log(this.props, "before");
-        this.props.GetUserDetailsFun(res.data.userDetails);
+        this.props.actions.GetUserDetailsFun(res.data.userDetails);
+       // this.props.actions.GetProductDetailsFun(res.data.productDetails);
         console.log(this.props, "after");
         this.setState({ productDetails: res.data.productDetails });
       })
@@ -57,7 +56,7 @@ class Dashboard extends React.Component {
                   <label>Name:</label>
                 </div>
                 <div className="col-md-6">
-                  <div>{this.state.userDetails.name}</div>
+                  <div>{this.props.userDetails.name}</div>
                 </div>
               </div>
               <div className="col-md-12">
@@ -65,7 +64,7 @@ class Dashboard extends React.Component {
                   <label>Age:</label>
                 </div>
                 <div className="col-md-6">
-                  <div>{this.state.userDetails.Age}</div>
+                  <div>{this.props.userDetails.Age}</div>
                 </div>
               </div>
               <div className="col-md-12">
@@ -73,9 +72,9 @@ class Dashboard extends React.Component {
                   <label>Address:</label>
                 </div>
                 <div className="col-md-6">
-                  <div>{this.state.userDetails.Address1}</div>
-                  <div>{this.state.userDetails.Address2}</div>
-                  <div>{this.state.userDetails.Address3}</div>
+                  <div>{this.props.userDetails.Address1}</div>
+                  <div>{this.props.userDetails.Address2}</div>
+                  <div>{this.props.userDetails.Address3}</div>
                 </div>
               </div>
               <div className="col-md-12">
@@ -83,7 +82,7 @@ class Dashboard extends React.Component {
                   <label>Contact:</label>
                 </div>
                 <div className="col-md-6">
-                  <div>{this.state.userDetails.Contact}</div>
+                  <div>{this.props.userDetails.Contact}</div>
                 </div>
               </div>
             </div>
@@ -106,16 +105,26 @@ class Dashboard extends React.Component {
 //Below is the function which maps the state values from store to props of the component
 function mapStateToProps(state) {
   return {
-    loggedIn: state.appVariables.loggedIn
+    loggedIn: state.appVariables.loggedIn,
+    userDetails: state.details.userDetails,
+    productDetails: state.details.productDetails
+    
   };
 }
 function mapDispatchToProps(dispatch) {
   return {
-    GetUserDetailsFun: function(userDetails) {
-      dispatch({
-        type: "GET_USER_DETAILS",
-        payload: userDetails
-      });
+    actions: { GetUserDetailsFun: function(userDetails) {
+          dispatch({
+            type: "GET_USER_DETAILS",
+            payload: userDetails
+          });
+    }/*,
+        GetProductDetailsFun: function(productDetails) {
+          dispatch({
+            type: "GET_PRODUCT_DETAILS",
+            payload: productDetails
+          });
+        }*/
     }
   };
 }

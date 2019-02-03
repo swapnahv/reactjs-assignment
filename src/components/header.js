@@ -15,7 +15,7 @@ class Header extends React.Component {
       <div className="col-md-12 bg-light-blue header">
         <div className="mt-20px">
           <div className="col-md-6">
-            <img src={Logo} alt="image" className="logo-size" />
+            <img src={Logo} alt="logo" className="logo-size" />
           </div>
           <div className="col-md-5">
             {this.props.loggedInProps ? (

@@ -8,30 +8,9 @@ class Profile extends React.Component {
   constructor() {
     super();
     this.state = {
-      userDetails: {
-        name: '',
-        Age:'',
-        Contact: '',
-        Address1: '',
-        Address2: '',
-        Address3: ''
-      },
       fieldDisable: true
     };
     this.enableFields = this.enableFields.bind(this);
-  }
-
-  componentDidMount() {
-    axios
-      .get("../data.JSON")
-      .then(res => {
-        this.setState({ userDetails: res.data.userDetails });
-      })
-      .catch(function(error) {
-        //Handle error
-        console.log(error);
-      });
-    console.log(this.props);
   }
 
   enableFields() {
@@ -60,7 +39,7 @@ class Profile extends React.Component {
                 <div className="col-md-6">
                   <input
                     type="text"
-                    value={this.state.userDetails.name}
+                    value={this.props.userDetails.name}
                     disabled={this.state.fieldDisable}
                   />
                 </div>
@@ -72,7 +51,7 @@ class Profile extends React.Component {
                 <div className="col-md-6">
                   <input
                     type="text"
-                    value={this.state.userDetails.Age}
+                    value={this.props.userDetails.Age}
                     disabled={this.state.fieldDisable}
                   />
                 </div>
@@ -84,7 +63,7 @@ class Profile extends React.Component {
                 <div className="col-md-6">
                   <input
                     type="text"
-                    value={this.state.userDetails.Contact}
+                    value={this.props.userDetails.Contact}
                     disabled={this.state.fieldDisable}
                   />
                 </div>
@@ -97,7 +76,7 @@ class Profile extends React.Component {
                   <div>
                     <input
                       type="text"
-                      value={this.state.userDetails.Address1}
+                      value={this.props.userDetails.Address1}
                       disabled={this.state.fieldDisable}
                     />
                   </div>
@@ -105,7 +84,7 @@ class Profile extends React.Component {
                     <input
                       type="text"
                       placeholder="Address field"
-                      value={this.state.userDetails.Address2}
+                      value={this.props.userDetails.Address2}
                       disabled={this.state.fieldDisable}
                     />
                   </div>
@@ -113,7 +92,7 @@ class Profile extends React.Component {
                     <input
                       type="text"
                       placeholder="Address field"
-                      value={this.state.userDetails.Address3}
+                      value={this.props.userDetails.Address3}
                       disabled={this.state.fieldDisable}
                     />
                   </div>
@@ -133,7 +112,8 @@ class Profile extends React.Component {
 //Below is the function which maps the state values from store to props of the component
 function mapStateToProps(state) {
   return {
-    loggedIn: state.appVariables.loggedIn
+    loggedIn: state.appVariables.loggedIn,
+    userDetails: state.details.userDetails
   };
 }
 
