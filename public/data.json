@@ -1,0 +1,15 @@
+{
+  "userDetails": {
+    "name": "Kavya",
+    "Age": "15",
+    "Address1": "Davanagere",
+    "Contact": "1234"
+  },
+  "productDetails": {
+    "prodCode": "LKSC",
+    "prodNo": "LS001",
+    "expiryDate": "20/02/2020",
+    "manufacturer": "Lakme",
+    "prodImg": "./prod.png"
+  }
+}
