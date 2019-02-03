@@ -12,9 +12,6 @@ import { connect } from "react-redux";
 class Dashboard extends React.Component {
   constructor() {
     super();
-    this.state = {
-      productDetails: {}
-    };
     this.goToEditProfilePage = this.goToEditProfilePage.bind(this);
   }
   goToEditProfilePage() {
@@ -26,18 +23,13 @@ class Dashboard extends React.Component {
       .get("data.json")
       .then(res => {
         //on successfuly fetching data from JSON file
-        //this.setState({userDetails: res.data.userDetails});
-        console.log(this.props, "before");
         this.props.actions.GetUserDetailsFun(res.data.userDetails);
         this.props.actions.GetProductDetailsFun(res.data.productDetails);
-        console.log(this.props, "after");
-        this.setState({ productDetails: res.data.productDetails });
       })
       .catch(function(error) {
         //Handle error
         console.log(error);
       });
-    console.log(this.props);
   }
 
   render() {
@@ -102,7 +94,7 @@ class Dashboard extends React.Component {
             </div>
           </div>
           <div className="col-md-offset-1 col-md-9 mt-20px">
-            <Accordion productDetails={this.state.productDetails} />
+            <Accordion productDetails={this.props.productDetails} />
           </div>
         </div>
       </div>
