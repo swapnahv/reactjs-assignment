@@ -73,7 +73,6 @@ class Login extends React.Component {
         <div className="col-md-offset-3 col-md-6 bg-white content">
           <h2 className="text-align-center">
             Login
-            {this.state.loggedIn}
           </h2>
           <div className="col-md-12 mt-20px">
             <div className="col-md-6">

@@ -8,7 +8,14 @@ class Profile extends React.Component {
   constructor() {
     super();
     this.state = {
-      userDetails: {},
+      userDetails: {
+        name: '',
+        Age:'',
+        Contact: '',
+        Address1: '',
+        Address2: '',
+        Address3: ''
+      },
       fieldDisable: true
     };
     this.enableFields = this.enableFields.bind(this);

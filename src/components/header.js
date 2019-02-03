@@ -7,26 +7,23 @@ class Header extends React.Component {
     super();
     this.state = {
       currentHour: new Date().getHours(),
-      currentMin: new Date().getMinutes(),
-      loggedIn: true
+      currentMin: new Date().getMinutes()
     };
-    this.logOut = this.logOut.bind(this);
-  }
-  logOut() {
-    this.props.history.push("/");
   }
   render() {
     return (
       <div className="col-md-12 bg-light-blue header">
         <div className="mt-20px">
           <div className="col-md-6">
-            <img src={Logo} alt="logo" className="logo-size" />
+            <img src={Logo} alt="image" className="logo-size" />
           </div>
           <div className="col-md-5">
-            {this.state.loggedIn === true ? (<LogoutModal logOutProps={this.logOut} />) : null}
+            {this.props.loggedInProps ? (
+              <LogoutModal logOutProps={this.logOut} />
+            ) : null}
           </div>
           <div className="col-md-1">
-            {this.state.loggedIn === true ? (
+            {this.props.loggedInProps ? (
               <h3>
                 {this.state.currentHour} : {this.state.currentMin}
               </h3>
