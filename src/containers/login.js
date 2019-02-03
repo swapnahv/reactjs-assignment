@@ -25,7 +25,7 @@ class Login extends React.Component {
     this.getLoggedInValue = this.getLoggedInValue.bind(this);
   }
   handleSubmit() {
-    if (this.state.username != "") {
+    if (this.state.username !== "") {
       //username validation
       let lastAtPos = this.state.username.lastIndexOf("@");
       let lastDotPos = this.state.username.lastIndexOf(".");
@@ -34,7 +34,7 @@ class Login extends React.Component {
         !(
           lastAtPos < lastDotPos &&
           lastAtPos > 0 &&
-          this.state.username.indexOf("@@") == -1 &&
+          this.state.username.indexOf("@@") === -1 &&
           lastDotPos > 2 &&
           this.state.username.length - lastDotPos > 2
         )

@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import Login from "./containers/login";
 import Dashboard from "./containers/dashboard.js";
 import Profile from "./containers/profile.js";
-import { createStore } from "redux";
-import allReducers from "./reducers/rootReducer.js";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 class App extends Component {
   render() {

@@ -1,3 +1,8 @@
+/*
+This is the footer component which is common across the application.
+onclick of footer text, user will navigate to www.google.com.
+*/
+
 import React from "react";
 
 class Footer extends React.Component {

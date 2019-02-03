@@ -10,6 +10,6 @@
     "prodNo": "LS001",
     "expiryDate": "20/02/2020",
     "manufacturer": "Lakme",
-    "prodImg": "../prod.png"
+    "prodImg": "./prod.png"
   }
 }

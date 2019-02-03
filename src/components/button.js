@@ -6,8 +6,7 @@ class Button extends React.Component {
       <button
         disabled={this.props.disabledProps}
         className="btn btn-primary"
-        onClick={this.props.handleSubmitProps}
-      >
+        onClick={this.props.handleSubmitProps}>
         {this.props.btnValue}
       </button>
     );
