@@ -1,10 +1,5 @@
 import { __values } from "../../node_modules/tslib";
 
-/*export default function(){
-	return({
-		loggedIn:false
-	})
-}*/
 const initialState = {
   userDetails: {},
   productDetails: {}
