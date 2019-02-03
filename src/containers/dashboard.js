@@ -21,7 +21,7 @@ class Dashboard extends React.Component {
     //navigation to edit profile page
     this.props.history.push("/editProfile");
   }
-  componentDidMount() {
+  componentWillMount() {
     axios
       .get("data.json")
       .then(res => {
@@ -29,7 +29,7 @@ class Dashboard extends React.Component {
         //this.setState({userDetails: res.data.userDetails});
         console.log(this.props, "before");
         this.props.actions.GetUserDetailsFun(res.data.userDetails);
-       // this.props.actions.GetProductDetailsFun(res.data.productDetails);
+        this.props.actions.GetProductDetailsFun(res.data.productDetails);
         console.log(this.props, "after");
         this.setState({ productDetails: res.data.productDetails });
       })
@@ -41,6 +41,14 @@ class Dashboard extends React.Component {
   }
 
   render() {
+    let {
+      name,
+      Age,
+      Address1,
+      Address2,
+      Address3,
+      Contact
+    } = this.props.userDetails;
     return (
       <div>
         <Header loggedInProps={this.props.loggedIn} />
@@ -56,7 +64,7 @@ class Dashboard extends React.Component {
                   <label>Name:</label>
                 </div>
                 <div className="col-md-6">
-                  <div>{this.props.userDetails.name}</div>
+                  <div>{name}</div>
                 </div>
               </div>
               <div className="col-md-12">
@@ -64,7 +72,7 @@ class Dashboard extends React.Component {
                   <label>Age:</label>
                 </div>
                 <div className="col-md-6">
-                  <div>{this.props.userDetails.Age}</div>
+                  <div>{Age}</div>
                 </div>
               </div>
               <div className="col-md-12">
@@ -72,9 +80,9 @@ class Dashboard extends React.Component {
                   <label>Address:</label>
                 </div>
                 <div className="col-md-6">
-                  <div>{this.props.userDetails.Address1}</div>
-                  <div>{this.props.userDetails.Address2}</div>
-                  <div>{this.props.userDetails.Address3}</div>
+                  <div>{Address1}</div>
+                  <div>{Address2}</div>
+                  <div>{Address3}</div>
                 </div>
               </div>
               <div className="col-md-12">
@@ -82,7 +90,7 @@ class Dashboard extends React.Component {
                   <label>Contact:</label>
                 </div>
                 <div className="col-md-6">
-                  <div>{this.props.userDetails.Contact}</div>
+                  <div>{Contact}</div>
                 </div>
               </div>
             </div>
@@ -108,23 +116,23 @@ function mapStateToProps(state) {
     loggedIn: state.appVariables.loggedIn,
     userDetails: state.details.userDetails,
     productDetails: state.details.productDetails
-    
   };
 }
 function mapDispatchToProps(dispatch) {
   return {
-    actions: { GetUserDetailsFun: function(userDetails) {
-          dispatch({
-            type: "GET_USER_DETAILS",
-            payload: userDetails
-          });
-    }/*,
-        GetProductDetailsFun: function(productDetails) {
-          dispatch({
-            type: "GET_PRODUCT_DETAILS",
-            payload: productDetails
-          });
-        }*/
+    actions: {
+      GetUserDetailsFun: function(userDetails) {
+        dispatch({
+          type: "GET_USER_DETAILS",
+          payload: userDetails
+        });
+      },
+      GetProductDetailsFun: function(productDetails) {
+        dispatch({
+          type: "GET_PRODUCT_DETAILS",
+          payload: productDetails
+        });
+      }
     }
   };
 }
