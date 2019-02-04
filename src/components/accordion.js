@@ -5,20 +5,23 @@ This dispalys the product details and and the product image which are passed by 
 import React from 'react';
 import {Button, Panel} from 'react-bootstrap';
 
-class Accordion extends React.Component {
+export default class Accordion extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       open: false
-    };
+		};
+		this.togglePanel = this.togglePanel.bind(this);
   }
-
+	togglePanel(){
+		this.setState({open: !this.state.open});
+	}
   render() {
 	  const prodLogo = this.props.productDetails.prodImg;
     return (
       <div>
-        <Button className = "w-100P" onClick={() => this.setState({ open: !this.state.open })}>
+        <Button className = "w-100P" onClick={this.togglePanel}>
           Product Name<span className="glyphicon glyphicon-menu-down pull-right"></span>
         </Button>
         <br />
@@ -73,5 +76,3 @@ class Accordion extends React.Component {
     );
   }
 }
-
-export default Accordion;

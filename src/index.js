@@ -8,6 +8,7 @@ import { createStore } from "redux";
 import Footer from "./components/footer";
 import "./index.css";
 
+
 let store = createStore(allReducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 ReactDOM.render(
