@@ -8,7 +8,7 @@ const Header = function(props) {
     let currentMin= new Date().getMinutes();
    
     return (
-      <div className="col-md-12 bg-light-blue header">
+      <div className="col-md-12 bg-light-blue header" data-test="headerComponent">
         <div className="mt-20px">
           <div className="col-md-6">
             <img src={Logo} alt="logo" className="logo-size" />

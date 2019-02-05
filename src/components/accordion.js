@@ -18,14 +18,24 @@ export default class Accordion extends React.Component {
 		this.setState({open: !this.state.open});
 	}
   render() {
-	  const prodLogo = this.props.productDetails.prodImg;
+		if(!this.props.productDetails){
+			return null;
+		}
+		let {
+			prodCode,
+			prodNo,
+			expiryDate,
+			manufacturer,
+			prodImg
+		} = this.props.productDetails;
+		
     return (
-      <div>
-        <Button className = "w-100P" onClick={this.togglePanel}>
+      <div data-test="accordionComponent">
+        <Button className = "w-100P accordionButton" onClick={this.togglePanel} data-test="accordionButton">
           Product Name<span className="glyphicon glyphicon-menu-down pull-right"></span>
         </Button>
         <br />
-        <Panel id="collapsible-panel" expanded={this.state.open} onToggle={()=>{}} >
+        <Panel data-test="accordionPanel" id="collapsible-panel" expanded={this.state.open} onToggle={()=>{}} >
           <Panel.Collapse>
             <Panel.Body>
               <div className = "row">
@@ -35,7 +45,7 @@ export default class Accordion extends React.Component {
 							<label>Product Code:</label>
 						</div>
 						<div className = "col-md-5">
-							{this.props.productDetails.prodCode}
+							{prodCode}
 						</div>
 					</div>
 					<div className = "col-md-12 row">
@@ -43,7 +53,7 @@ export default class Accordion extends React.Component {
 							<label>Product No:</label>
 						</div>
 						<div className = "col-md-5">
-							{this.props.productDetails.prodNo}
+							{prodNo}
 						</div>
 					</div>
 					<div className = "col-md-12 row">
@@ -51,7 +61,7 @@ export default class Accordion extends React.Component {
 							<label>Expiry date:</label>
 						</div>
 						<div className = "col-md-5">
-							{this.props.productDetails.expiryDate}
+							{expiryDate}
 						</div>
 					</div>
 					<div className = "col-md-12 row">
@@ -59,12 +69,12 @@ export default class Accordion extends React.Component {
 							<label>Manufacturer:</label>
 						</div>
 						<div className = "col-md-5">
-							{this.props.productDetails.manufacturer}
+							{manufacturer}
 						</div>
 					</div>
 				</div>
 				<div className = "col-md-4">
-					<img src={prodLogo} alt="productImg" className="prod-img-size"/>
+					<img src={prodImg} alt="productImg" className="prod-img-size"/>
 				</div>
 			  </div>
             </Panel.Body>

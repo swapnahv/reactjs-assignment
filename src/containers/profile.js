@@ -26,7 +26,7 @@ class Profile extends React.Component {
       Contact
     } = this.props.userDetails;
     return (
-      <div>
+      <div data-test="profileComponent">
         <Header loggedInProps={this.props.loggedIn} />
         <div className="col-md-offset-3 col-md-6 bg-white content">
           <div className="col-md-12">

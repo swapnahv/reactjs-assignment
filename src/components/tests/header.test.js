@@ -1,14 +1,14 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Profile from '../profile';
+import Header from '../header';
 
-describe('Profile component', function(){
+describe('Header Component', function(){
     let component;
     beforeEach(function(){
-        component = shallow(<Profile/>);
+        component = shallow(<Header/>);
     });
     it('should render without error', function(){
-        const wrapper  = component.find('[data-test="profileComponent"]');
+        const wrapper  = component.find('[data-test="headerComponent"]');
         expect(wrapper.length).toBe(1);
     })
 })
