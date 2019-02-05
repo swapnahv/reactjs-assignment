@@ -34,8 +34,8 @@ class LogoutModal extends React.Component {
   
   render() {
 	return(
-		<div>	
-			<Button bsStyle="primary" bsSize="large" className = "pull-right" onClick={this.handleShow}>
+		<div data-test="logoutModalComponent">	
+			<Button data-test="logOutButton" bsStyle="primary" bsSize="large" className = "pull-right" onClick={this.handleShow}>
 				Log Out
 			</Button>
 

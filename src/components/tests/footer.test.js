@@ -16,9 +16,10 @@ describe("Footer component", function() {
     expect(wrapper.text()).toBe("Services.History.Contact");
   });
   it("navigate to goggle on click of footer", function() {
+    window.location.assign = jest.fn();
     const footerNavigation = jest.fn();
     const wrapper = component.find("h2");
     wrapper.simulate("click");
-    expect(footerNavigation).toHaveBeenCalledWith();
+    expect(footerNavigation).toHaveBeenCalled();
   });
 });
