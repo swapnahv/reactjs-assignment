@@ -10,8 +10,8 @@ const Footer = function() {
     window.location.href = "http://www.google.com";
   }
     return (
-      <div>
-        <h2 onClick={footerNavigation}>Services.History.Contact</h2>
+      <div data-test="footerComponent">
+        <h2 onClick={footerNavigation} data-test="footerComponentText">Services.History.Contact</h2>
       </div>
     );
 }
